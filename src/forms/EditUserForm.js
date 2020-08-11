@@ -9,18 +9,18 @@ const EditUserForm = (props) => {
     setUser({ ...user, [name]: value })
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    props.updateUser(user.id, user)
+  }
+
   useEffect(() => {
     setUser(props.currentUser)
   }, [props])
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault()
-
-        props.updateUser(user.id, user)
-      }}
-    >
+    <form onSubmit={handleSubmit}>
       <label>Name</label>
       <input
         type="text"
