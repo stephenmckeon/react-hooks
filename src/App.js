@@ -5,12 +5,12 @@ import EditUserForm from './forms/EditUserForm'
 
 const App = () => {
   const usersData = [
-    { id: 1, name: 'Stove', username: 'ScubaStephe' },
-    { id: 2, name: 'Mike', username: 'KingMike' },
-    { id: 3, name: 'Will', username: 'WillBill' },
+    { id: 1, name: 'Stove', username: 'ScubaStephe', spiritAnimal: 'tiger' },
+    { id: 2, name: 'Mike', username: 'KingMike', spiritAnimal: 'fruit fly' },
+    { id: 3, name: 'Will', username: 'WillBill', spiritAnimal: 'bear' },
   ]
 
-  const initialFormState = { id: null, name: '', username: '' }
+  const initialFormState = { id: null, name: '', username: '', spiritAnimal: '' }
 
   const [users, setUsers] = useState(usersData)
   const [editing, setEditing] = useState(false)
@@ -29,7 +29,7 @@ const App = () => {
   const editRow = (user) => {
     setEditing(true)
 
-    setCurrentUser({ id: user.id, name: user.name, username: user.username })
+    setCurrentUser({ id: user.id, name: user.name, username: user.username, spiritAnimal: user.spiritAnimal })
   }
 
   const updateUser = (id, updatedUser) => {
@@ -38,30 +38,39 @@ const App = () => {
     setUsers(users.map((user) => (user.id === id ? updatedUser : user)))
   }
 
+  const deleteUsers = () => {
+    setUsers([])
+  }
+
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
       <div className="flex-row">
         <div className="flex-large">
         {editing ? (
-    <div>
-      <h2>Edit user</h2>
-      <EditUserForm
-        setEditing={setEditing}
-        currentUser={currentUser}
-        updateUser={updateUser}
-      />
-    </div>
-  ) : (
-    <div>
-      <h2>Add user</h2>
-      <AddUserForm addUser={addUser} />
-    </div>
-  )}
+          <div>
+            <h2>Edit user</h2>
+            <EditUserForm
+              setEditing={setEditing}
+              currentUser={currentUser}
+              updateUser={updateUser}
+            />
+          </div>
+        ) : (
+          <div>
+            <h2>Add user</h2>
+            <AddUserForm addUser={addUser} />
+          </div>
+        )}
         </div>
         <div className="flex-large">
           <h2>View users</h2>
           <UserTable users={users} editRow={editRow} removeUser={removeUser} />
+          <button
+            className="button muted-button"
+            onClick={deleteUsers}>
+          Delete All Users
+        </button>
         </div>
       </div>
     </div>
