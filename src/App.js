@@ -66,12 +66,12 @@ const App = () => {
         <div className="flex-large">
           <h2>View users</h2>
           <UserTable users={users} editRow={editRow} removeUser={removeUser} />
-        </div>
-        <button
+          <button
             className="button muted-button"
             onClick={deleteUsers}>
-          {'Delete All Users'}
+          Delete All Users
         </button>
+        </div>
       </div>
     </div>
   )
