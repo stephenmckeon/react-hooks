@@ -15,6 +15,10 @@ const EditUserForm = (props) => {
     props.updateUser(user.id, user)
   }
 
+  const handleClick = () => {
+    props.setEditing(false)
+  }
+
   useEffect(() => {
     setUser(props.currentUser)
   }, [props])
@@ -37,7 +41,7 @@ const EditUserForm = (props) => {
       />
       <button>Update user</button>
       <button
-        onClick={() => props.setEditing(false)}
+        onClick={handleClick}
         className="button muted-button"
       >
         Cancel
