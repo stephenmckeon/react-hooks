@@ -5,12 +5,12 @@ import EditUserForm from './forms/EditUserForm'
 
 const App = () => {
   const usersData = [
-    { id: 1, name: 'Stove', username: 'ScubaStephe', spiritAnimal: 'tiger' },
-    { id: 2, name: 'Mike', username: 'KingMike', spiritAnimal: 'fruit fly' },
-    { id: 3, name: 'Will', username: 'WillBill', spiritAnimal: 'bear' },
+    { id: 1, name: 'Stove', username: 'ScubaStephe', spiritAnimal: 'tiger', color: 'red' },
+    { id: 2, name: 'Mike', username: 'KingMike', spiritAnimal: 'fruit fly', color: 'blue' },
+    { id: 3, name: 'Will', username: 'WillBill', spiritAnimal: 'bear', color: 'orange' },
   ]
 
-  const initialFormState = { id: null, name: '', username: '', spiritAnimal: '' }
+  const initialFormState = { id: null, name: '', username: '', spiritAnimal: '', color: '' }
 
   const [users, setUsers] = useState(usersData)
   const [editing, setEditing] = useState(false)
@@ -29,7 +29,7 @@ const App = () => {
   const editRow = (user) => {
     setEditing(true)
 
-    setCurrentUser({ id: user.id, name: user.name, username: user.username, spiritAnimal: user.spiritAnimal })
+    setCurrentUser({ id: user.id, name: user.name, username: user.username, spiritAnimal: user.spiritAnimal, color: user.color })
   }
 
   const updateUser = (id, updatedUser) => {

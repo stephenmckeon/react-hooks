@@ -46,6 +46,13 @@ const EditUserForm = (props) => {
         value={user.spiritAnimal}
         onChange={handleInputChange}
       />
+      <label>Favorite Color</label>
+      <input
+        type="text"
+        name="color"
+        value={user.color}
+        onChange={handleInputChange}
+      />
       <button>Update user</button>
       <button
         onClick={handleClick}
